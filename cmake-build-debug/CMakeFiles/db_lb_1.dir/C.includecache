@@ -1,0 +1,34 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+C:/Users/User/CLionProjects/db-lb-1/constants.h
+
+C:/Users/User/CLionProjects/db-lb-1/main.c
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+ctype.h
+-
+constants.h
+C:/Users/User/CLionProjects/db-lb-1/constants.h
+outputUtils.h
+C:/Users/User/CLionProjects/db-lb-1/outputUtils.h
+
+C:/Users/User/CLionProjects/db-lb-1/outputUtils.h
+stdio.h
+-
+types.h
+C:/Users/User/CLionProjects/db-lb-1/types.h
+
+C:/Users/User/CLionProjects/db-lb-1/types.h
+constants.h
+C:/Users/User/CLionProjects/db-lb-1/constants.h
+

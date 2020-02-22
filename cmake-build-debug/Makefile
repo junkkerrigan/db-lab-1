@@ -122,6 +122,33 @@ db_lb_1/fast:
 	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/build
 .PHONY : db_lb_1/fast
 
+constants.obj: constants.c.obj
+
+.PHONY : constants.obj
+
+# target to build an object file
+constants.c.obj:
+	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/constants.c.obj
+.PHONY : constants.c.obj
+
+constants.i: constants.c.i
+
+.PHONY : constants.i
+
+# target to preprocess a source file
+constants.c.i:
+	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/constants.c.i
+.PHONY : constants.c.i
+
+constants.s: constants.c.s
+
+.PHONY : constants.s
+
+# target to generate assembly for a file
+constants.c.s:
+	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/constants.c.s
+.PHONY : constants.c.s
+
 main.obj: main.c.obj
 
 .PHONY : main.obj
@@ -149,6 +176,33 @@ main.c.s:
 	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/main.c.s
 .PHONY : main.c.s
 
+outputUtils.obj: outputUtils.c.obj
+
+.PHONY : outputUtils.obj
+
+# target to build an object file
+outputUtils.c.obj:
+	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/outputUtils.c.obj
+.PHONY : outputUtils.c.obj
+
+outputUtils.i: outputUtils.c.i
+
+.PHONY : outputUtils.i
+
+# target to preprocess a source file
+outputUtils.c.i:
+	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/outputUtils.c.i
+.PHONY : outputUtils.c.i
+
+outputUtils.s: outputUtils.c.s
+
+.PHONY : outputUtils.s
+
+# target to generate assembly for a file
+outputUtils.c.s:
+	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/outputUtils.c.s
+.PHONY : outputUtils.c.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -158,9 +212,15 @@ help:
 	@echo ... db_lb_1
 	@echo ... edit_cache
 	@echo ... rebuild_cache
+	@echo ... constants.obj
+	@echo ... constants.i
+	@echo ... constants.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
+	@echo ... outputUtils.obj
+	@echo ... outputUtils.i
+	@echo ... outputUtils.s
 .PHONY : help
 
 

@@ -74,7 +74,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="C:/Users/User/CLionProjects/db-lb-1/constants.c">
+			<Option target="db_lb_1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/db-lb-1/constants.h">
+			<Option target="db_lb_1"/>
+		</Unit>
 		<Unit filename="C:/Users/User/CLionProjects/db-lb-1/main.c">
+			<Option target="db_lb_1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/db-lb-1/outputUtils.c">
+			<Option target="db_lb_1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/db-lb-1/outputUtils.h">
+			<Option target="db_lb_1"/>
+		</Unit>
+		<Unit filename="C:/Users/User/CLionProjects/db-lb-1/types.h">
 			<Option target="db_lb_1"/>
 		</Unit>
 		<Unit filename="C:/Users/User/CLionProjects/db-lb-1/CMakeLists.txt">

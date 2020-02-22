@@ -11,7 +11,29 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3764f57a-c185-463a-a686-cbaed43eca5c" name="Default Changelist" comment="" />
+    <list default="true" id="3764f57a-c185-463a-a686-cbaed43eca5c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/constants.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/constants.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputUtils.c" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/outputUtils.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/types.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/Makefile2" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/clion-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/DependInfo.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/build.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/cmake_clean.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/depend.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/objects1.rsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/progress.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/progress.make" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/progress.marks" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/db_lb_1.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/db_lb_1.cbp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,7 +43,11 @@
     <option name="formatViaClangd" value="false" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1YAPHFrtzLfyYyBPF1xSiOQyUMc" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -29,6 +55,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -36,7 +63,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
   <component name="RunManager">
     <configuration name="db_lb_1" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="db_lb_1" TARGET_NAME="db_lb_1" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="db_lb_1" RUN_TARGET_NAME="db_lb_1">
@@ -57,7 +84,7 @@
       <updated>1582382335245</updated>
       <workItem from="1582382336591" duration="524000" />
       <workItem from="1582382892795" duration="16000" />
-      <workItem from="1582382952118" duration="6817000" />
+      <workItem from="1582382952118" duration="24761000" />
     </task>
     <servers />
   </component>
@@ -65,24 +92,37 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="277" y="55" key="SettingsEditor" timestamp="1582382806922">
+    <state width="1481" height="194" key="GridCell.Tab.0.bottom" timestamp="1582408064198">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="55" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582382806922" />
+    <state width="1481" height="194" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582408064198" />
+    <state width="1481" height="194" key="GridCell.Tab.0.center" timestamp="1582408064198">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1481" height="194" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582408064198" />
+    <state width="1481" height="194" key="GridCell.Tab.0.left" timestamp="1582408064198">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1481" height="194" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582408064198" />
+    <state width="1481" height="194" key="GridCell.Tab.0.right" timestamp="1582408064198">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1481" height="194" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582408064198" />
+    <state x="277" y="0" key="SettingsEditor" timestamp="1582391395040">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582391395040" />
     <state x="379" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1582382962995">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="379" y="194" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582382962995" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/main.c</url>
-          <line>67</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <state x="341" y="183" key="run.anything.popup" timestamp="1582392496185">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="341" y="183" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1582392496185" />
+    <state x="347" y="-1" key="search.everywhere.popup" timestamp="1582390055234">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="347" y="-1" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1582390055234" />
   </component>
 </project>

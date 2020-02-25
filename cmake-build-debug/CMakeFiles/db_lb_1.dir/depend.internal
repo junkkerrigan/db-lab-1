@@ -7,10 +7,10 @@ CMakeFiles/db_lb_1.dir/constants.c.obj
 CMakeFiles/db_lb_1.dir/main.c.obj
  C:/Users/User/CLionProjects/db-lb-1/constants.h
  C:/Users/User/CLionProjects/db-lb-1/main.c
- C:/Users/User/CLionProjects/db-lb-1/outputUtils.h
  C:/Users/User/CLionProjects/db-lb-1/types.h
-CMakeFiles/db_lb_1.dir/outputUtils.c.obj
+ C:/Users/User/CLionProjects/db-lb-1/utils.h
+CMakeFiles/db_lb_1.dir/utils.c.obj
  C:/Users/User/CLionProjects/db-lb-1/constants.h
- C:/Users/User/CLionProjects/db-lb-1/outputUtils.c
- C:/Users/User/CLionProjects/db-lb-1/outputUtils.h
  C:/Users/User/CLionProjects/db-lb-1/types.h
+ C:/Users/User/CLionProjects/db-lb-1/utils.c
+ C:/Users/User/CLionProjects/db-lb-1/utils.h

@@ -6,11 +6,11 @@ CMakeFiles/db_lb_1.dir/constants.c.obj: ../constants.h
 
 CMakeFiles/db_lb_1.dir/main.c.obj: ../constants.h
 CMakeFiles/db_lb_1.dir/main.c.obj: ../main.c
-CMakeFiles/db_lb_1.dir/main.c.obj: ../outputUtils.h
 CMakeFiles/db_lb_1.dir/main.c.obj: ../types.h
+CMakeFiles/db_lb_1.dir/main.c.obj: ../utils.h
 
-CMakeFiles/db_lb_1.dir/outputUtils.c.obj: ../constants.h
-CMakeFiles/db_lb_1.dir/outputUtils.c.obj: ../outputUtils.c
-CMakeFiles/db_lb_1.dir/outputUtils.c.obj: ../outputUtils.h
-CMakeFiles/db_lb_1.dir/outputUtils.c.obj: ../types.h
+CMakeFiles/db_lb_1.dir/utils.c.obj: ../constants.h
+CMakeFiles/db_lb_1.dir/utils.c.obj: ../types.h
+CMakeFiles/db_lb_1.dir/utils.c.obj: ../utils.c
+CMakeFiles/db_lb_1.dir/utils.c.obj: ../utils.h
 

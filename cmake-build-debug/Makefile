@@ -176,32 +176,32 @@ main.c.s:
 	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/main.c.s
 .PHONY : main.c.s
 
-outputUtils.obj: outputUtils.c.obj
+utils.obj: utils.c.obj
 
-.PHONY : outputUtils.obj
+.PHONY : utils.obj
 
 # target to build an object file
-outputUtils.c.obj:
-	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/outputUtils.c.obj
-.PHONY : outputUtils.c.obj
+utils.c.obj:
+	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/utils.c.obj
+.PHONY : utils.c.obj
 
-outputUtils.i: outputUtils.c.i
+utils.i: utils.c.i
 
-.PHONY : outputUtils.i
+.PHONY : utils.i
 
 # target to preprocess a source file
-outputUtils.c.i:
-	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/outputUtils.c.i
-.PHONY : outputUtils.c.i
+utils.c.i:
+	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/utils.c.i
+.PHONY : utils.c.i
 
-outputUtils.s: outputUtils.c.s
+utils.s: utils.c.s
 
-.PHONY : outputUtils.s
+.PHONY : utils.s
 
 # target to generate assembly for a file
-outputUtils.c.s:
-	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/outputUtils.c.s
-.PHONY : outputUtils.c.s
+utils.c.s:
+	$(MAKE) -f CMakeFiles\db_lb_1.dir\build.make CMakeFiles/db_lb_1.dir/utils.c.s
+.PHONY : utils.c.s
 
 # Help Target
 help:
@@ -218,9 +218,9 @@ help:
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
-	@echo ... outputUtils.obj
-	@echo ... outputUtils.i
-	@echo ... outputUtils.s
+	@echo ... utils.obj
+	@echo ... utils.i
+	@echo ... utils.s
 .PHONY : help
 
 

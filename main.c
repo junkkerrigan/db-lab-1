@@ -2,8 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
+#include <time.h>
 #include "constants.h"
-#include "outputUtils.h"
+#include "utils.h"
 
 int freeLibKey = 0;
 int actualLibsCnt = 0;
@@ -12,40 +13,36 @@ int freeBookKey = 0;
 int actualBooksCnt = 0;
 int readableBooksCnt = 0;
 
-void initLib(lib* l) {
-    l->key = -1;
-    l->firstBookIdx = -1;
-    l->booksCnt = 0;
-}
-
-void initBook(book* b) {
-    b->key = -1;
-    b->nextBookIdx = -1;
-    b->libKey = -1;
-}
-
 int enterLib(lib* l) {
     char buf[20];
 
+    memset(buf, '\0', 20);
     printf("Enter name (max. %d symbols):\n", MAX_LIBRARY_NAME_LEN);
-    scanf("%20s", buf);
-    fflush(stdin);
-    strncpy(l->name, buf, MAX_LIBRARY_NAME_LEN);
+    scanf("%s", buf);
+    if (strlen(buf) > MAX_LIBRARY_NAME_LEN) {
+        printf("Invalid input: name is too long.\n");
+        return -1;
+    }
+    strcpy(l->name, buf);
 
     printf("Enter phone number (max. %d symbols):\n", MAX_PHONE_NUMBER_LEN);
-    scanf("%20s", buf);
-    fflush(stdin);
-    strncpy(l->phoneNumber, buf, MAX_PHONE_NUMBER_LEN);
+    memset(buf, '\0', 20);
+    scanf("%s", buf);
+    if (strlen(buf) > MAX_PHONE_NUMBER_LEN) {
+        printf("Invalid input: phone number is too long.\n");
+        return -1;
+    }
+    strcpy(l->phoneNumber, buf);
 
     printf("Is the library state or private? (`s` for state, `p` for private)\n");
-    scanf("%20s", buf);
-    fflush(stdin);
+    memset(buf, '\0', 20);
+    scanf("%s", buf);
     if (strcmp(buf, "s") == 0) {
         l->isState = 1;
     } else if (strcmp(buf, "p") == 0) {
         l->isState = 0;
     } else {
-        printf("Invalid input.");
+        printf("Invalid input.\n");
         return -1;
     }
 
@@ -180,7 +177,6 @@ int addLib() {
 
 int isValidInt(char* str, int len) {
     if (len > 9) {
-        printf("Invalid input: no such library key");
         return 0;
     }
     for(int j = 0; j < len; j++) {
@@ -209,35 +205,43 @@ int getLibIdxByKey(int libKey) {
 }
 
 int enterBook(book* b) {
+    // TODO: fix bug with name len 20, then name and phone will concat IN SOME REASON
     char buf[20];
 
     printf("Enter name (max. %d symbols):\n", MAX_BOOK_NAME_LEN);
-    scanf("%20s", buf);
-    fflush(stdin);
-    strncpy(b->name, buf, MAX_BOOK_NAME_LEN);
+    memset(buf, '\0', 20);
+    scanf("%s", buf);
+    if (strlen(buf) > MAX_BOOK_NAME_LEN) {
+        printf("Invalid input: name is too long.\n");
+        return -1;
+    }
+    strcpy(b->name, buf);
 
     printf("Enter author (max. %d symbols):\n", MAX_BOOK_AUTHOR_LEN);
-    scanf("%20s", buf);
-    fflush(stdin);
-    strncpy(b->author, buf, MAX_BOOK_AUTHOR_LEN);
+    memset(buf, '\0', 20);
+    scanf("%s", buf);
+    if (strlen(buf) > MAX_BOOK_AUTHOR_LEN) {
+        printf("Invalid input: author`s name is too long.\n");
+        return -1;
+    }
+    strcpy(b->author, buf);
 
     printf("Is the book available or in use? (`a` for available, `u` for in use)\n");
-    scanf("%20s", buf);
-    fflush(stdin);
+    memset(buf, '\0', 20);
+    scanf("%s", buf);
     if (strcmp(buf, "a") == 0) {
         b->isAvailable = 1;
     } else if (strcmp(buf, "u") == 0) {
         b->isAvailable = 0;
     } else {
-        printf("Invalid input.");
+        printf("Invalid input.\n");
         return -1;
     }
 
     printf("Enter key of the library to assign book with:\n");
     scanf("%s", buf);
-    fflush(stdin);
     if (!isValidInt(buf, strlen(buf))) {
-        printf("Invalid input.");
+        printf("Invalid input: no such library key: `%s`.\n", buf);
         return -1;
     }
     int libKey = atoi(buf);
@@ -383,7 +387,7 @@ int addBook() {
     }
     int libIdx = getLibIdxByKey(b.libKey);
     if (0 > libIdx) {
-        printf("Wrong input: no library with such key.\n");
+        printf("Wrong input: no library with key %d.\n", b.libKey);
         return -1;
     }
     b.key = freeBookKey++;
@@ -419,10 +423,14 @@ void printCheatsheet() {
            "9) Modify data about library (only address or/and phone number)\n"
            "10) Modify data about book (only name and author)\n"
            "11) Terminate work with database (Q)\n"
-           "12) Print this cheatsheet (H)\n\n");
+           "12) Print this cheatsheet (H)\n");
 }
 
 int printAllLibs() {
+    if (actualLibsCnt == 0) {
+        printf("There are no libraries at moment ;(\n");
+        return 0;
+    }
     FILE* libsDb = NULL;
     if (0 != openFileSafe(&libsDb, libsDbFileName, "rb", "libraries database")) {
         return -2;
@@ -433,7 +441,7 @@ int printAllLibs() {
     for(int j = 0; j < readableLibsCnt; j++) {
         fread(&l, sizeof(lib), 1, libsDb);
         if (-1 != getLibIdxByKey(l.key)) {
-            printLibrary(&l);
+            printLibrary(l);
             printf("\n");
         }
     }
@@ -447,7 +455,7 @@ int printLibByKey(int libKey) {
     int libIdx = getLibIdxByKey(libKey);
     if (0 > libIdx) {
         printf("No library with such key.\n");
-        return 0;
+        return -1;
     }
 
     FILE* libsDbFl = NULL;
@@ -460,7 +468,7 @@ int printLibByKey(int libKey) {
     fread(&l, sizeof(lib), 1, libsDbFl);
 
     printLibraryHeader();
-    printLibrary(&l);
+    printLibrary(l);
     printf("\n");
     printLibraryFooter();
     fclose(libsDbFl);
@@ -469,6 +477,10 @@ int printLibByKey(int libKey) {
 }
 
 int printAllBooks() {
+    if (actualBooksCnt == 0) {
+        printf("There are no books at moment ;(\n");
+        return 0;
+    }
     FILE* booksDbFl = NULL;
     if (0 != openFileSafe(&booksDbFl, booksDbFileName, "rb", "books database")) {
         return -2;
@@ -478,9 +490,8 @@ int printAllBooks() {
     book b;
     for(int j = 0; j < readableBooksCnt; j++) {
         fread(&b, sizeof(book), 1, booksDbFl);
-        printf("-----------------------\n%d\n-----------------------\n", getBookIdxByKey(b.key));
         if (-1 != getBookIdxByKey(b.key)) {
-            printBook(&b);
+            printBook(b);
             printf("\n");
         }
     }
@@ -493,8 +504,8 @@ int printAllBooks() {
 int printBooksByLibKey(int libKey) {
     int libIdx = getLibIdxByKey(libKey);
     if (libIdx < 0) {
-        printf("No library with such key.");
-        return 0;
+        printf("No library with such key.\n");
+        return -1;
     }
 
     FILE* libsDbFl = NULL;
@@ -523,7 +534,7 @@ int printBooksByLibKey(int libKey) {
     while (curBookIdx != -1) {
         fseek(booksDbFl, curBookIdx * sizeof(book), SEEK_SET);
         fread(&b, sizeof(book), 1, booksDbFl);
-        printBook(&b);
+        printBook(b);
         printf("\n");
         curBookIdx = b.nextBookIdx;
     }
@@ -546,6 +557,7 @@ int addFreeBookIdx(int bookIdx, int freeBookIdxsCnt) {
     return 0;
 }
 
+
 int getLibByIdx(lib* l, int libIdx) {
     FILE* libsDbFl = NULL;
     if (0 != openFileSafe(&libsDbFl, libsDbFileName, "rb", "libraries database")) {
@@ -562,8 +574,8 @@ int getLibByIdx(lib* l, int libIdx) {
 int deleteBook(int bookKey) {
     int bookIdx = getBookIdxByKey(bookKey);
     if (0 > bookIdx) {
-        printf("Wrong input: no book with such key.\n");
-        return 0;
+        printf("Wrong input: no book with key %d.\n", bookKey);
+        return -1;
     }
 
     book b;
@@ -617,34 +629,35 @@ int interactWithDb() {
     fflush(stdin);
     printf("\n");
     if (strcmp(buf, "H") == 0) {
-        printf("\n");
         printCheatsheet();
-        scanf("%2s", buf);
-        printf("\n");
+        return 0;
+    } else if (strcmp(buf, "Q") == 0) {
+        return 1; // TODO: add save
     }
     int option = atoi(buf);
-    if (option < 1 || option > 11) {
+    if (option < 1 || option > 12) {
         printf("Invalid input: no such option. Try again.\n");
         fflush(stdin);
         return -1;
     }
 
+    int success;
     switch (option) {
         case 1: {
-            if (0 != addLib()) {
+            if (0 == addLib()) {
+                printf("Library successfully added.\n");
+            } else {
                 printf("Failed to add library.\n");
                 return -1;
-            } else {
-                printf("Library successfully added.\n");
             }
             break;
         }
         case 2: {
-            if (0 != addBook()) {
+            if (0 == addBook()) {
+                printf("Book successfully added.\n");
+            } else {
                 printf("Failed to add book.\n");
                 return -1;
-            } else {
-                printf("Book successfully added.\n");
             }
             break;
         }
@@ -655,16 +668,17 @@ int interactWithDb() {
             break;
         }
         case 4: {
+            success = 1;
             printf("Enter library key:\n\n");
             scanf("%s", buf);
             fflush(stdin);
             printf("\n");
             if (!isValidInt(buf, strlen(buf))) {
-                printf("Invalid input: no such library key.\n\n");
-                return -1;
+                printf("Invalid input: no such library key: `%s`.\n", buf);
+                success = 0;
             }
             int libKey = atoi(buf);
-            if (0 != printLibByKey(libKey)) {
+            if (!success || 0 != printLibByKey(libKey)) {
                 printf("Failed to print library.\n");
             }
             break;
@@ -676,35 +690,37 @@ int interactWithDb() {
             break;
         }
         case 6: {
+            success = 1;
             printf("Enter library key:\n\n");
             scanf("%s", buf);
             fflush(stdin);
             printf("\n");
             if (!isValidInt(buf, strlen(buf))) {
-                printf("Invalid input: no such library key.\n\n");
-                return -1;
+                printf("Invalid input: no such library key: `%s`.\n", buf);
+                success = 0;
             }
             int libKey = atoi(buf);
-            if (0 != printBooksByLibKey(libKey)) {
+            if (!success || 0 != printBooksByLibKey(libKey)) {
                 printf("Failed to print library.\n");
             }
             break;
         }
         case 7: {
+            success = 1;
             printf("Enter book key:\n\n");
             scanf("%s", buf);
             fflush(stdin);
             printf("\n");
             if (!isValidInt(buf, strlen(buf))) {
-                printf("Invalid input: no such library key.\n\n");
-                return -1;
+                printf("Invalid input: no such book key: `%s`.\n", buf);
+                success = 0;
             }
             int bookKey = atoi(buf);
-            if (0 != deleteBook(bookKey)) {
+            if (success && 0 == deleteBook(bookKey)) {
+                printf("Book successfully deleted.\n");
+            } else {
                 printf("Failed to delete book.\n");
                 return -1;
-            } else {
-                printf("Book successfully deleted.\n");
             }
             break;
         }
@@ -718,7 +734,11 @@ int interactWithDb() {
 
         }
         case 11: {
-
+            return 1;
+        }
+        case 12: {
+            printCheatsheet();
+            return 0;
         }
         default: {
             return -2;
@@ -752,6 +772,7 @@ void initFiles() {
 }
 
 int main() {
+    srand(time(0));
     initFiles();
     while(1 != interactWithDb());
     return 0;

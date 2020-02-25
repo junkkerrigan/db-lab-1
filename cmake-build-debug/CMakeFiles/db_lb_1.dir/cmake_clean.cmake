@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
   "CMakeFiles/db_lb_1.dir/constants.c.obj"
   "CMakeFiles/db_lb_1.dir/main.c.obj"
-  "CMakeFiles/db_lb_1.dir/outputUtils.c.obj"
+  "CMakeFiles/db_lb_1.dir/utils.c.obj"
   "db_lb_1.exe"
   "db_lb_1.exe.manifest"
   "db_lb_1.pdb"

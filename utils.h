@@ -16,10 +16,20 @@ void printLibraryFooter();
 
 long getFileSize(FILE* f);
 
-void printLibrary(lib* l);
+void printLibrary(lib l);
 
-void printBook(book* b);
+void printBook(book b);
 
 void printBooksHeader();
 
 void printBooksFooter();
+
+void generateRandString(char *str, size_t size);
+
+void initLib(lib* l);
+
+void initBook(book* b);
+
+void generateLib(lib* l);
+
+void generateBook(book* b);

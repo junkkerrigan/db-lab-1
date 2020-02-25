@@ -15,6 +15,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/objects.a" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/books.data" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/books.data" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/books.idx" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/books.idx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/db_lb_1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/db_lb_1.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/libraries.data" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libraries.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/libraries.idx" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libraries.idx" afterDir="false" />
@@ -70,7 +72,7 @@
       <updated>1582382335245</updated>
       <workItem from="1582382336591" duration="524000" />
       <workItem from="1582382892795" duration="16000" />
-      <workItem from="1582382952118" duration="29217000" />
+      <workItem from="1582382952118" duration="30610000" />
     </task>
     <servers />
   </component>
@@ -78,26 +80,30 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1481" height="152" key="GridCell.Tab.0.bottom" timestamp="1582591242820">
+    <state x="261" y="0" key="#Code_Folding" timestamp="1582591308655">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="152" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582591242820" />
-    <state width="1481" height="152" key="GridCell.Tab.0.center" timestamp="1582591242820">
+    <state x="261" y="0" key="#Code_Folding/0.0.1536.824@0.0.1536.824" timestamp="1582591308655" />
+    <state width="1481" height="627" key="GridCell.Tab.0.bottom" timestamp="1582592510959">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="152" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582591242820" />
-    <state width="1481" height="152" key="GridCell.Tab.0.left" timestamp="1582591242820">
+    <state width="1481" height="627" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582592510959" />
+    <state width="1481" height="627" key="GridCell.Tab.0.center" timestamp="1582592510959">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="152" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582591242820" />
-    <state width="1481" height="152" key="GridCell.Tab.0.right" timestamp="1582591242820">
+    <state width="1481" height="627" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582592510959" />
+    <state width="1481" height="627" key="GridCell.Tab.0.left" timestamp="1582592510959">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="152" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582591242820" />
-    <state x="277" y="0" key="SettingsEditor" timestamp="1582391395040">
+    <state width="1481" height="627" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582592510959" />
+    <state width="1481" height="627" key="GridCell.Tab.0.right" timestamp="1582592510959">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582391395040" />
+    <state width="1481" height="627" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582592510959" />
+    <state x="277" y="0" key="SettingsEditor" timestamp="1582591336226">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="277" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1582591336226" />
     <state x="379" y="194" key="com.intellij.ide.util.TipDialog" timestamp="1582382962995">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

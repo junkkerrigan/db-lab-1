@@ -172,12 +172,15 @@ int addLib() {
 }
 
 int isValidInt(char* str, int len) {
+    if (len > 9) {
+        printf("Invalid input: no such library key");
+        return 0;
+    }
     for(int j = 0; j < len; j++) {
         if (!isdigit(str[j])) {
             return 0;
         }
     }
-
     return 1;
 }
 
@@ -296,7 +299,6 @@ int writeBookToDb(book* b, int idx) {
 
     return 0;
 }
-
 
 int addBookToLib(int libIdx, int bookIdx) {
     FILE* libsDbFl = NULL;
@@ -417,8 +419,6 @@ int printAllLibs() {
     return 0;
 }
 
-
-
 int printLibByKey(int libKey) {
     int libIdx = getLibIdxByKey(libKey);
     if (-1 == libIdx) {
@@ -444,8 +444,6 @@ int printLibByKey(int libKey) {
     return 0;
 }
 
-
-
 int printAllBooks() {
     FILE* booksDbFl = NULL;
     if (0 != openFileSafe(&booksDbFl, booksDbFileName, "rb", "books database")) {
@@ -464,6 +462,49 @@ int printAllBooks() {
     printBooksFooter();
     fclose(booksDbFl);
 
+    return 0;
+}
+
+int printBooksByLibKey(int libKey) {
+    int libIdx = getLibIdxByKey(libKey);
+    if (libIdx < 0) {
+        printf("No library with such key.");
+        return -1;
+    }
+
+    FILE* libsDbFl = NULL;
+    if (0 != openFileSafe(&libsDbFl, libsDbFileName, "rb", "libraries database")) {
+        return -2;
+    }
+
+    lib l;
+    fseek(libsDbFl, libIdx * sizeof(lib), SEEK_SET);
+    fread(&l, sizeof(lib), 1, libsDbFl);
+    fclose(libsDbFl);
+
+    int curBookIdx = l.firstBookIdx;
+    if (curBookIdx == -1) {
+        printf("Library with key %d has no books yet.\n", libKey);
+        return 0;
+    }
+
+    FILE* booksDbFl = NULL;
+    if (0 != openFileSafe(&booksDbFl, booksDbFileName, "rb", "books database")) {
+        return -2;
+    }
+
+    printBooksHeader();
+    book b;
+    while (curBookIdx != -1) {
+        fseek(booksDbFl, curBookIdx * sizeof(book), SEEK_SET);
+        fread(&b, sizeof(book), 1, booksDbFl);
+        printBook(&b);
+        printf("\n");
+        curBookIdx = b.nextBookIdx;
+    }
+    printBooksFooter();
+
+    fclose(booksDbFl);
     return 0;
 }
 
@@ -510,15 +551,9 @@ int interactWithDb() {
             char buf[9];
             scanf("%9s", buf);
             printf("\n");
-            if (strlen(buf) > 9) {
-                printf("Invalid input: no such library key");
+            if (!isValidInt(buf, strlen(buf))) {
+                printf("Invalid input: no such library key.\n\n");
                 return -1;
-            }
-            for(int j = 0; j < strlen(buf); j++) {
-                if (!isdigit(buf[j])) {
-                    printf("Invalid input: no such library key");
-                    return -1;
-                }
             }
             int libKey = atoi(buf);
             if (0 != printLibByKey(libKey)) {
@@ -533,7 +568,19 @@ int interactWithDb() {
             break;
         }
         case 6: {
-
+            printf("Enter library key:\n\n");
+            char buf[9];
+            scanf("%9s", buf);
+            printf("\n");
+            if (!isValidInt(buf, strlen(buf))) {
+                printf("Invalid input: no such library key.\n\n");
+                return -1;
+            }
+            int libKey = atoi(buf);
+            if (0 != printBooksByLibKey(libKey)) {
+                printf("Failed to print library.\n");
+            }
+            break;
         }
         case 7: {
 
@@ -551,9 +598,12 @@ int interactWithDb() {
 
         }
         default: {
+            return -2;
             break;
         }
     }
+
+    return 0;
 }
 
 void initFiles() {

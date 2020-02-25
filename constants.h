@@ -9,7 +9,7 @@
 #define MAX_BOOK_NAME_LEN 20
 #define MAX_BOOK_AUTHOR_LEN 20
 #define MAX_LIBRARIES_COUNT 2
-#define MAX_BOOKS_COUNT 20
+#define MAX_BOOKS_COUNT 4
 
 #define _libsDbFileName "libraries.data";
 #define _libsIdxFileName "libraries.idx";

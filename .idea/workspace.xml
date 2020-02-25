@@ -12,31 +12,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3764f57a-c185-463a-a686-cbaed43eca5c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/utils.c.obj" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/DependInfo.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/DependInfo.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/build.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/build.make" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/cmake_clean.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/cmake_clean.cmake" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/depend.internal" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/depend.internal" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/depend.make" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/depend.make" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/objects.a" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/objects.a" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/objects1.rsp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/objects1.rsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/outputUtils.c.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/utils.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/db_lb_1.dir/utils.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/books.data" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/books.data" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/books.gz" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/books.gz" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/books.idx" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/books.idx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/db_lb_1.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/db_lb_1.cbp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/db_lb_1.exe" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/db_lb_1.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/libraries.data" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libraries.data" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/libraries.idx" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/libraries.idx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/constants.h" beforeDir="false" afterPath="$PROJECT_DIR$/constants.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputUtils.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/outputUtils.h" beforeDir="false" afterPath="$PROJECT_DIR$/utils.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.c" beforeDir="false" afterPath="$PROJECT_DIR$/utils.c" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -88,7 +76,7 @@
       <updated>1582382335245</updated>
       <workItem from="1582382336591" duration="524000" />
       <workItem from="1582382892795" duration="16000" />
-      <workItem from="1582382952118" duration="40018000" />
+      <workItem from="1582382952118" duration="46334000" />
     </task>
     <servers />
   </component>
@@ -100,22 +88,22 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="261" y="0" key="#Code_Folding/0.0.1536.824@0.0.1536.824" timestamp="1582591308655" />
-    <state width="1481" height="626" key="GridCell.Tab.0.bottom" timestamp="1582602068605">
+    <state width="1481" height="626" key="GridCell.Tab.0.bottom" timestamp="1582674483341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="626" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582602068605" />
-    <state width="1481" height="626" key="GridCell.Tab.0.center" timestamp="1582602068604">
+    <state width="1481" height="626" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1582674483341" />
+    <state width="1481" height="626" key="GridCell.Tab.0.center" timestamp="1582674483341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="626" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582602068604" />
-    <state width="1481" height="626" key="GridCell.Tab.0.left" timestamp="1582602068604">
+    <state width="1481" height="626" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1582674483341" />
+    <state width="1481" height="626" key="GridCell.Tab.0.left" timestamp="1582674483341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="626" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582602068604" />
-    <state width="1481" height="626" key="GridCell.Tab.0.right" timestamp="1582602068604">
+    <state width="1481" height="626" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1582674483341" />
+    <state width="1481" height="626" key="GridCell.Tab.0.right" timestamp="1582674483341">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1481" height="626" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582602068604" />
+    <state width="1481" height="626" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1582674483341" />
     <state width="1481" height="245" key="GridCell.Tab.1.bottom" timestamp="1582600840704">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -140,10 +128,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="379" y="194" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1582382962995" />
-    <state x="341" y="183" key="run.anything.popup" timestamp="1582589745777">
+    <state x="341" y="183" key="run.anything.popup" timestamp="1582673107114">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="341" y="183" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1582589745777" />
+    <state x="341" y="183" key="run.anything.popup/0.0.1536.824@0.0.1536.824" timestamp="1582673107114" />
     <state x="347" y="-1" key="search.everywhere.popup" timestamp="1582597474560">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

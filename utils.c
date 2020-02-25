@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "utils.h"
 
 void logBook(book* b) {
@@ -18,8 +19,10 @@ void printLibraryHeader() {
 }
 
 void printLibrary(lib l) {
+    char trueName[MAX_LIBRARY_NAME_LEN];
+    strncpy(trueName, l.name, MAX_LIBRARY_NAME_LEN);
     printf("    %-11d", l.key);
-    printf("%-22s", l.name);
+    printf("%-22s", trueName);
     printf("%-12s", (l.isState ? "State" : "Private"));
     printf("%-22d", l.booksCnt);
     printf("%s\n", l.phoneNumber);
@@ -38,6 +41,7 @@ long getFileSize(FILE* f) {
 }
 
 void printBook(book b) {
+
     printf("    %-11d", b.key);
     printf("%-19s", b.name);
     printf("%-22s", b.author);

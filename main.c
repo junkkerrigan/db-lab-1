@@ -29,14 +29,17 @@ int enterLib(lib* l) {
 
     printf("Enter name (max. %d symbols):\n", MAX_LIBRARY_NAME_LEN);
     scanf("%20s", buf);
+    fflush(stdin);
     strncpy(l->name, buf, MAX_LIBRARY_NAME_LEN);
 
     printf("Enter phone number (max. %d symbols):\n", MAX_PHONE_NUMBER_LEN);
     scanf("%20s", buf);
+    fflush(stdin);
     strncpy(l->phoneNumber, buf, MAX_PHONE_NUMBER_LEN);
 
     printf("Is the library state or private? (`s` for state, `p` for private)\n");
     scanf("%20s", buf);
+    fflush(stdin);
     if (strcmp(buf, "s") == 0) {
         l->isState = 1;
     } else if (strcmp(buf, "p") == 0) {
@@ -61,13 +64,13 @@ int openFileSafe(FILE** f, const char* fileName, const char* mode, const char* f
     return 0;
 }
 
-int writeLibToDb(lib* l, int idx) {
+int writeLibToDbOnIdx(lib* l, int libIdx) {
     FILE* libsDbFl = NULL;
     if (0 != openFileSafe(&libsDbFl, libsDbFileName, "r+b", "libraries database")) {
         return -2;
     }
 
-    fseek(libsDbFl, idx * sizeof(lib), SEEK_SET);
+    fseek(libsDbFl, libIdx * sizeof(lib), SEEK_SET);
     fwrite(l, sizeof(lib), 1, libsDbFl);
     fclose(libsDbFl);
 
@@ -108,7 +111,7 @@ int retrieveFreeLibIdx() {
     return -3;
 }
 
-int addLibRecToIdx(int libKey, int libIdx) {
+int addLibRecToIdxFl(int libKey, int libIdx) {
     FILE* libsIdxFl = NULL;
     if (0 != openFileSafe(&libsIdxFl, libsIdxFileName, "r+b", "libraries index")) {
         return -2;
@@ -125,7 +128,7 @@ int addLibRecToIdx(int libKey, int libIdx) {
     return 0;
 }
 
-int addBookRecToIdx(int bookKey, int bookIdx) {
+int addBookRecToIdxFl(int bookKey, int bookIdx) {
     FILE* bookIdxFl = NULL;
     if (0 != openFileSafe(&bookIdxFl, booksIdxFileName, "r+b", "books index")) {
         return -2;
@@ -135,10 +138,14 @@ int addBookRecToIdx(int bookKey, int bookIdx) {
     i.key = bookKey;
     i.idx = bookIdx;
 
-    fseek(bookIdxFl, 0, SEEK_END);
+    if (bookIdx >= 0) {
+        fseek(bookIdxFl, 0, SEEK_END);
+    } else {
+        fseek(bookIdxFl, bookKey * sizeof(idxRec), SEEK_SET);
+    }
     fwrite(&i, sizeof(idxRec), 1, bookIdxFl);
-    fclose(bookIdxFl);
 
+    fclose(bookIdxFl);
     return 0;
 }
 
@@ -160,10 +167,10 @@ int addLib() {
         return -1;
     }
 
-    if (0 != writeLibToDb(&l, idx)) {
+    if (0 != writeLibToDbOnIdx(&l, idx)) {
         return -1;
     }
-    if (0 != addLibRecToIdx(l.key, idx)) {
+    if (0 != addLibRecToIdxFl(l.key, idx)) {
         return -1;
     }
     actualLibsCnt++;
@@ -206,14 +213,17 @@ int enterBook(book* b) {
 
     printf("Enter name (max. %d symbols):\n", MAX_BOOK_NAME_LEN);
     scanf("%20s", buf);
+    fflush(stdin);
     strncpy(b->name, buf, MAX_BOOK_NAME_LEN);
 
     printf("Enter author (max. %d symbols):\n", MAX_BOOK_AUTHOR_LEN);
     scanf("%20s", buf);
+    fflush(stdin);
     strncpy(b->author, buf, MAX_BOOK_AUTHOR_LEN);
 
     printf("Is the book available or in use? (`a` for available, `u` for in use)\n");
     scanf("%20s", buf);
+    fflush(stdin);
     if (strcmp(buf, "a") == 0) {
         b->isAvailable = 1;
     } else if (strcmp(buf, "u") == 0) {
@@ -225,6 +235,7 @@ int enterBook(book* b) {
 
     printf("Enter key of the library to assign book with:\n");
     scanf("%s", buf);
+    fflush(stdin);
     if (!isValidInt(buf, strlen(buf))) {
         printf("Invalid input.");
         return -1;
@@ -239,7 +250,7 @@ int getBookIdxByKey(int bookKey) {
     if (bookKey >= freeBookKey) {
         return -1;
     }
-    FILE *booksIdxFl = NULL;
+    FILE* booksIdxFl = NULL;
     if (0 != openFileSafe(&booksIdxFl, booksIdxFileName, "rb", "books index")) {
         return -2;
     }
@@ -262,41 +273,54 @@ int retrieveFreeBookIdx() {
         return 0;
     }
 
-    FILE* booksGz = NULL;
-    if (0 != openFileSafe(&booksGz, booksGzFileName, "rb", "books garbage zone")) {
+    FILE* booksGzFl = NULL;
+    if (0 != openFileSafe(&booksGzFl, booksGzFileName, "rb", "books garbage zone")) {
         return -2;
     }
 
     int freeIdx = 0;
     long curPos = 0;
     for(int j = 0; j < MAX_LIBRARIES_COUNT; j++) {
-        curPos = ftell(booksGz);
-        fread(&freeIdx, sizeof(int), 1, booksGz);
+        curPos = ftell(booksGzFl);
+        fread(&freeIdx, sizeof(int), 1, booksGzFl);
 
         if (freeIdx != -1) {
-            fseek(booksGz, curPos, SEEK_SET);
+            fseek(booksGzFl, curPos, SEEK_SET);
             int minusOne = -1;
-            fwrite(&minusOne, sizeof(int), 1, booksGz);
-            fclose(booksGz);
+            fwrite(&minusOne, sizeof(int), 1, booksGzFl);
+            fclose(booksGzFl);
             return freeIdx;
         }
     }
 
-    fclose(booksGz);
+    fclose(booksGzFl);
 
     return -3;
 }
 
-int writeBookToDb(book* b, int idx) {
+int writeBookToDbOnIdx(book* b, int bookIdx) {
     FILE* booksDbFl = NULL;
     if (0 != openFileSafe(&booksDbFl, booksDbFileName, "r+b", "books database")) {
         return -2;
     }
 
-    fseek(booksDbFl, idx * sizeof(book), SEEK_SET);
+    fseek(booksDbFl, bookIdx * sizeof(book), SEEK_SET);
     fwrite(b, sizeof(book), 1, booksDbFl);
     fclose(booksDbFl);
 
+    return 0;
+}
+
+int getBookByIdx(book* b, int bookIdx) {
+    FILE* booksDbFl = NULL;
+    if (0 != openFileSafe(&booksDbFl, booksDbFileName, "r+b", "books database")) {
+        return -2;
+    }
+
+    fseek(booksDbFl, bookIdx * sizeof(book), SEEK_SET);
+    fread(b, sizeof(book), 1, booksDbFl);
+
+    fclose(booksDbFl);
     return 0;
 }
 
@@ -358,7 +382,7 @@ int addBook() {
         return -1;
     }
     int libIdx = getLibIdxByKey(b.libKey);
-    if (-1 == libIdx) {
+    if (0 > libIdx) {
         printf("Wrong input: no library with such key.\n");
         return -1;
     }
@@ -372,10 +396,10 @@ int addBook() {
         return -1;
     }
 
-    if (0 != writeBookToDb(&b, bookIdx)) {
+    if (0 != writeBookToDbOnIdx(&b, bookIdx)) {
         return -1;
     }
-    if (0 != addBookRecToIdx(b.key, bookIdx)) {
+    if (0 != addBookRecToIdxFl(b.key, bookIdx)) {
         return -1;
     }
     actualBooksCnt++;
@@ -421,25 +445,25 @@ int printAllLibs() {
 
 int printLibByKey(int libKey) {
     int libIdx = getLibIdxByKey(libKey);
-    if (-1 == libIdx) {
+    if (0 > libIdx) {
         printf("No library with such key.\n");
-        return -1;
+        return 0;
     }
 
-    FILE* libsDb = NULL;
-    if (0 != openFileSafe(&libsDb, libsDbFileName, "rb", "libraries database")) {
+    FILE* libsDbFl = NULL;
+    if (0 != openFileSafe(&libsDbFl, libsDbFileName, "rb", "libraries database")) {
         return -2;
     }
 
     lib l;
-    fseek(libsDb, libIdx * sizeof(lib), SEEK_SET);
-    fread(&l, sizeof(lib), 1, libsDb);
+    fseek(libsDbFl, libIdx * sizeof(lib), SEEK_SET);
+    fread(&l, sizeof(lib), 1, libsDbFl);
 
     printLibraryHeader();
     printLibrary(&l);
     printf("\n");
     printLibraryFooter();
-    fclose(libsDb);
+    fclose(libsDbFl);
 
     return 0;
 }
@@ -454,6 +478,7 @@ int printAllBooks() {
     book b;
     for(int j = 0; j < readableBooksCnt; j++) {
         fread(&b, sizeof(book), 1, booksDbFl);
+        printf("-----------------------\n%d\n-----------------------\n", getBookIdxByKey(b.key));
         if (-1 != getBookIdxByKey(b.key)) {
             printBook(&b);
             printf("\n");
@@ -469,7 +494,7 @@ int printBooksByLibKey(int libKey) {
     int libIdx = getLibIdxByKey(libKey);
     if (libIdx < 0) {
         printf("No library with such key.");
-        return -1;
+        return 0;
     }
 
     FILE* libsDbFl = NULL;
@@ -508,19 +533,96 @@ int printBooksByLibKey(int libKey) {
     return 0;
 }
 
+int addFreeBookIdx(int bookIdx, int freeBookIdxsCnt) {
+    FILE* booksGzFl = NULL;
+    if (0 != openFileSafe(&booksGzFl, booksGzFileName, "r+b", "books garbage zone")) {
+        return -2;
+    }
+
+    fseek(booksGzFl, freeBookIdxsCnt * sizeof(int), SEEK_SET);
+    fwrite(&bookIdx, sizeof(int), 1, booksGzFl);
+
+    fclose(booksGzFl);
+    return 0;
+}
+
+int getLibByIdx(lib* l, int libIdx) {
+    FILE* libsDbFl = NULL;
+    if (0 != openFileSafe(&libsDbFl, libsDbFileName, "rb", "libraries database")) {
+        return -2;
+    }
+
+    fseek(libsDbFl, libIdx * sizeof(lib), SEEK_SET);
+    fread(l, sizeof(lib), 1, libsDbFl);
+
+    fclose(libsDbFl);
+    return 0;
+}
+
+int deleteBook(int bookKey) {
+    int bookIdx = getBookIdxByKey(bookKey);
+    if (0 > bookIdx) {
+        printf("Wrong input: no book with such key.\n");
+        return 0;
+    }
+
+    book b;
+    if (0 != getBookByIdx(&b, bookIdx)) {
+        return -1;
+    }
+
+    if (0 != addBookRecToIdxFl(bookKey, -1)) {
+        return -1;
+    }
+    if (0 != addFreeBookIdx(bookIdx, MAX_BOOKS_COUNT - actualBooksCnt)) {
+        return -1;
+    }
+
+    lib l;
+    int libIdx = getLibIdxByKey(b.libKey);
+    if (0 != getLibByIdx(&l, libIdx)) {
+        return -1;
+    }
+
+    if (l.firstBookIdx == bookIdx) { // first book in lib
+        l.firstBookIdx = b.nextBookIdx;
+        writeLibToDbOnIdx(&l, getLibIdxByKey(l.key));
+    } else {
+        int curBookIdx = -1;
+        int nextBookIdx = l.firstBookIdx;
+
+        while (bookIdx != nextBookIdx) { // book to delete is next
+            getBookByIdx(&b, nextBookIdx);
+            curBookIdx = nextBookIdx;
+            nextBookIdx = b.nextBookIdx;
+        }
+
+        book bToDel;
+        getBookByIdx(&bToDel, nextBookIdx);
+        b.nextBookIdx = bToDel.nextBookIdx;
+        writeBookToDbOnIdx(&b, curBookIdx);
+    }
+    l.booksCnt--;
+    writeLibToDbOnIdx(&l, libIdx);
+
+    actualBooksCnt--;
+    return 0;
+}
+
 int interactWithDb() {
     printf("\nChoose an option (H or 12 to see cheatsheet):\n\n");
 
-    char optionStr[2];
-    scanf("%2s", optionStr);
+    char buf[9];
+    scanf("%2s", buf);
+    fflush(stdin);
     printf("\n");
-    if (strcmp(optionStr, "H") == 0) {
+    if (strcmp(buf, "H") == 0) {
         printf("\n");
         printCheatsheet();
-        scanf("%2s", optionStr);
+        scanf("%2s", buf);
         printf("\n");
     }
-    int option = atoi(optionStr);
+    int option = atoi(buf);
     if (option < 1 || option > 11) {
         printf("Invalid input: no such option. Try again.\n");
         fflush(stdin);
@@ -531,12 +633,18 @@ int interactWithDb() {
         case 1: {
             if (0 != addLib()) {
                 printf("Failed to add library.\n");
+                return -1;
+            } else {
+                printf("Library successfully added.\n");
             }
             break;
         }
         case 2: {
             if (0 != addBook()) {
                 printf("Failed to add book.\n");
+                return -1;
+            } else {
+                printf("Book successfully added.\n");
             }
             break;
         }
@@ -548,8 +656,8 @@ int interactWithDb() {
         }
         case 4: {
             printf("Enter library key:\n\n");
-            char buf[9];
-            scanf("%9s", buf);
+            scanf("%s", buf);
+            fflush(stdin);
             printf("\n");
             if (!isValidInt(buf, strlen(buf))) {
                 printf("Invalid input: no such library key.\n\n");
@@ -569,8 +677,8 @@ int interactWithDb() {
         }
         case 6: {
             printf("Enter library key:\n\n");
-            char buf[9];
-            scanf("%9s", buf);
+            scanf("%s", buf);
+            fflush(stdin);
             printf("\n");
             if (!isValidInt(buf, strlen(buf))) {
                 printf("Invalid input: no such library key.\n\n");
@@ -583,7 +691,22 @@ int interactWithDb() {
             break;
         }
         case 7: {
-
+            printf("Enter book key:\n\n");
+            scanf("%s", buf);
+            fflush(stdin);
+            printf("\n");
+            if (!isValidInt(buf, strlen(buf))) {
+                printf("Invalid input: no such library key.\n\n");
+                return -1;
+            }
+            int bookKey = atoi(buf);
+            if (0 != deleteBook(bookKey)) {
+                printf("Failed to delete book.\n");
+                return -1;
+            } else {
+                printf("Book successfully deleted.\n");
+            }
+            break;
         }
         case 8: {
 

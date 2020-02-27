@@ -4,12 +4,12 @@
 #endif //DB_LB_1_CONSTANTS_H
 
 
-#define MAX_PHONE_NUMBER_LEN 13
-#define MAX_LIBRARY_NAME_LEN 20
-#define MAX_BOOK_NAME_LEN 20
-#define MAX_BOOK_AUTHOR_LEN 20
-#define MAX_LIBRARIES_COUNT 2
-#define MAX_BOOKS_COUNT 4
+#define MAX_PHONE_NUMBER_LEN 14
+#define MAX_LIBRARY_NAME_LEN 21
+#define MAX_BOOK_NAME_LEN 21
+#define MAX_BOOK_AUTHOR_LEN 21
+#define MAX_LIBRARIES_COUNT 3
+#define MAX_BOOKS_COUNT 6
 
 #define _libsDbFileName "libraries.data";
 #define _libsIdxFileName "libraries.idx";

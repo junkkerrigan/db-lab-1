@@ -9,27 +9,26 @@ void logBook(book* b) {
 }
 
 void logLibrary(lib* l) {
-    printf("key: %d\nname: %s\nphoneNumber: %s\nisState: %d\nfirstBookAddr: %d\nbooksCnt: %d\n",
-           l->key, l->name, l->phoneNumber, l->isState, l->firstBookIdx, l->booksCnt);
+    printf("key: %d\nname: %s\nphoneNumber: %s\nisState: %s\nbooksCnt: %d\n",
+           l->key, l->name, l->phoneNumber, (l->isState == 1)? "state" : "private", l->booksCnt);
 }
 
 void printLibraryHeader() {
-    printf("************************************    Libraries    *************************************\n\n");
-    printf("    Key        Name                  Type        Amount of books       Phone number \n\n");
+    printf("************************************    Libraries    **********************************************\n\n");
+    printf("    Key        Name                  Type        Amount of books       Phone number       Index\n\n");
 }
 
-void printLibrary(lib l) {
-    char trueName[MAX_LIBRARY_NAME_LEN];
-    strncpy(trueName, l.name, MAX_LIBRARY_NAME_LEN);
+void printLibrary(lib l, int libIdx) {
     printf("    %-11d", l.key);
-    printf("%-22s", trueName);
+    printf("%-22s", l.name);
     printf("%-12s", (l.isState ? "State" : "Private"));
     printf("%-22d", l.booksCnt);
-    printf("%s\n", l.phoneNumber);
+    printf("%-19s", l.phoneNumber);
+    printf("%d\n", libIdx);
 }
 
 void printLibraryFooter() {
-    printf("******************************************************************************************\n");
+    printf("***************************************************************************************************\n");
 }
 
 long getFileSize(FILE* f) {
@@ -40,22 +39,22 @@ long getFileSize(FILE* f) {
     return ans;
 }
 
-void printBook(book b) {
-
+void printBook(book b, int bookIdx) {
     printf("    %-11d", b.key);
-    printf("%-19s", b.name);
+    printf("%-23s", b.name);
     printf("%-22s", b.author);
     printf("%-16s", (b.isAvailable ? "Available" : "In use"));
-    printf("%d\n", b.libKey);
+    printf("%-18d", b.libKey);
+    printf("%d\n", bookIdx);
 }
 
 void printBooksHeader() {
-    printf("**************************************     Books     **********************************\n\n");
-    printf("    Key        Name               Author                Status          Library key \n\n");
+    printf("****************************************     Books     ***********************************************\n\n");
+    printf("    Key        Name                   Author                Status          Library key       Index\n\n");
 }
 
 void printBooksFooter() {
-    printf("***************************************************************************************\n");
+    printf("******************************************************************************************************\n");
 }
 
 void generateRandString(char *str, size_t size)

@@ -16,9 +16,9 @@ void printLibraryFooter();
 
 long getFileSize(FILE* f);
 
-void printLibrary(lib l);
+void printLibrary(lib l, int libIdx);
 
-void printBook(book b);
+void printBook(book b, int bookIdx);
 
 void printBooksHeader();
 
@@ -33,3 +33,5 @@ void initBook(book* b);
 void generateLib(lib* l);
 
 void generateBook(book* b);
+
+int min(int a, int b);

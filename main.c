@@ -14,29 +14,26 @@ int actualBooksCnt = 0;
 int readableBooksCnt = 0;
 
 int enterLib(lib* l) {
-    char nameBuf[MAX_LIBRARY_NAME_LEN + 1];
-
-    printf("Enter name (max. %d symbols):\n", MAX_LIBRARY_NAME_LEN);
-    scanf("%s", nameBuf);
-    if (strlen(nameBuf) > MAX_LIBRARY_NAME_LEN) {
+    printf("Enter name (max. %d symbols):\n", MAX_LIBRARY_NAME_LEN - 1);
+    scanf("%s", l->name);
+    fflush(stdin);
+    if (strlen(l->name) > MAX_LIBRARY_NAME_LEN - 1) {
         printf("Invalid input: name is too long.\n");
         return -1;
     }
-    strcpy(l->name, nameBuf);
 
-    char phoneBuf[MAX_PHONE_NUMBER_LEN + 1];
-
-    printf("Enter phone number (max. %d symbols):\n", MAX_PHONE_NUMBER_LEN);
-    scanf("%s", phoneBuf);
-    if (strlen(phoneBuf) > MAX_PHONE_NUMBER_LEN) {
+    printf("Enter phone number (max. %d symbols):\n", MAX_PHONE_NUMBER_LEN - 1);
+    scanf("%s", l->phoneNumber);
+    fflush(stdin);
+    if (strlen(l->phoneNumber) > MAX_PHONE_NUMBER_LEN - 1) {
         printf("Invalid input: phone number is too long.\n");
         return -1;
     }
-    strcpy(l->phoneNumber, phoneBuf);
 
     char ownershipBuf[2];
     printf("Is the library state or private? (`s` for `state`, `p` for `private`)\n");
     scanf("%s", ownershipBuf);
+    fflush(stdin);
     if (strcmp(ownershipBuf, "s") == 0) {
         l->isState = 1;
     } else if (strcmp(ownershipBuf, "p") == 0) {
@@ -76,16 +73,12 @@ int writeLibToDbOnIdx(lib* l, int libIdx) {
 
 int retrieveFreeLibIdx() {
     // is enough space checked before
-    if (readableLibsCnt <= MAX_LIBRARIES_COUNT) {
-        readableLibsCnt++;
-        return readableLibsCnt - 1;
-    }
-    if (actualLibsCnt == 0) {
-        return 0;
+    if (readableLibsCnt < MAX_LIBRARIES_COUNT) {
+        return readableLibsCnt++;
     }
 
     FILE* libsGz = NULL;
-    if (0 != openFileSafe(&libsGz, libsGzFileName, "rb", "libraries garbage zone")) {
+    if (0 != openFileSafe(&libsGz, libsGzFileName, "r+b", "libraries garbage zone")) {
         return -2;
     }
 
@@ -93,12 +86,17 @@ int retrieveFreeLibIdx() {
     long curPos = 0;
     for(int j = 0; j < MAX_LIBRARIES_COUNT; j++) {
         curPos = ftell(libsGz);
+        printf("\nread: %d\n", curPos);
         fread(&freeIdx, sizeof(int), 1, libsGz);
-
+        printf("\ninRetrieve:%d|\n", freeIdx);
         if (freeIdx != -1) {
             fseek(libsGz, curPos, SEEK_SET);
             int minusOne = -1;
             fwrite(&minusOne, sizeof(int), 1, libsGz);
+            fseek(libsGz, curPos, SEEK_SET);
+            int a;
+            fread(&a, sizeof(int), 1, libsGz);
+            printf("\nread: %d\n", a);
             fclose(libsGz);
             return freeIdx;
         }
@@ -165,6 +163,7 @@ int addLib() {
     l.key = freeLibKey++;
 
     int idx = retrieveFreeLibIdx();
+    printf("\ninAddLib: %d|\n", idx);
     if (idx < 0) {
         return -1;
     }
@@ -210,29 +209,26 @@ int getLibIdxByKey(int libKey) {
 }
 
 int enterBook(book* b) {
-    // TODO: fix bug with name len 20, then name and phone will concat IN SOME REASON
-    char nameBuf[20];
-
-    printf("Enter name (max. %d symbols):\n", MAX_BOOK_NAME_LEN);
-    scanf("%s", nameBuf);
-    if (strlen(nameBuf) > MAX_BOOK_NAME_LEN) {
+    printf("Enter name (max. %d symbols):\n", MAX_BOOK_NAME_LEN - 1);
+    scanf("%s", b->name);
+    fflush(stdin);
+    if (strlen(b->name) > MAX_BOOK_NAME_LEN - 1) {
         printf("Invalid input: name is too long.\n");
         return -1;
     }
-    strcpy(b->name, nameBuf);
 
-    char authorBuf[MAX_BOOK_AUTHOR_LEN + 1];
-    printf("Enter author (max. %d symbols):\n", MAX_BOOK_AUTHOR_LEN);
-    scanf("%s", authorBuf);
-    if (strlen(authorBuf) > MAX_BOOK_AUTHOR_LEN) {
+    printf("Enter author (max. %d symbols):\n", MAX_BOOK_AUTHOR_LEN - 1);
+    scanf("%s", b->author);
+    fflush(stdin);
+    if (strlen(b->author) > MAX_BOOK_AUTHOR_LEN - 1) {
         printf("Invalid input: author`s name is too long.\n");
         return -1;
     }
-    strcpy(b->author, authorBuf);
 
     char availabilityBuf[2];
     printf("Is the book available or in use? (`a` for `available`, `u` for `in use`)\n");
     scanf("%s", availabilityBuf);
+    fflush(stdin);
     if (strcmp(availabilityBuf, "a") == 0) {
         b->isAvailable = 1;
     } else if (strcmp(availabilityBuf, "u") == 0) {
@@ -245,6 +241,7 @@ int enterBook(book* b) {
     char keyBuf[10];
     printf("Enter key of the library to assign book with:\n");
     scanf("%s", keyBuf);
+    fflush(stdin);
     if (!isValidInt(keyBuf, strlen(keyBuf))) {
         printf("Invalid input: no such library key: `%s`.\n", keyBuf);
         return -1;
@@ -274,12 +271,8 @@ int getBookIdxByKey(int bookKey) {
 
 int retrieveFreeBookIdx() {
     // is enough space checked before
-    if (readableBooksCnt <= MAX_BOOKS_COUNT) {
-        readableBooksCnt++;
-        return readableBooksCnt - 1;
-    }
-    if (actualBooksCnt == 0) {
-        return 0;
+    if (readableBooksCnt < MAX_BOOKS_COUNT) {
+        return readableBooksCnt++;
     }
 
     FILE* booksGzFl = NULL;
@@ -434,7 +427,7 @@ void printCheatsheet() {
 
 int printAllLibs() {
     if (actualLibsCnt == 0) {
-        printf("There are no libraries at moment ;(\n");
+        printf("There are no libraries at the moment ;(\n");
         return 0;
     }
     FILE* libsDb = NULL;
@@ -446,8 +439,9 @@ int printAllLibs() {
     lib l;
     for(int j = 0; j < readableLibsCnt; j++) {
         fread(&l, sizeof(lib), 1, libsDb);
-        if (-1 != getLibIdxByKey(l.key)) {
-            printLibrary(l);
+        int libIdx = getLibIdxByKey(l.key);
+        if (-1 != libIdx) {
+            printLibrary(l, libIdx);
             printf("\n");
         }
     }
@@ -473,10 +467,7 @@ int printLibByKey(int libKey) {
     fseek(libsDbFl, libIdx * sizeof(lib), SEEK_SET);
     fread(&l, sizeof(lib), 1, libsDbFl);
 
-    printLibraryHeader();
-    printLibrary(l);
-    printf("\n");
-    printLibraryFooter();
+    logLibrary(&l);
     fclose(libsDbFl);
 
     return 0;
@@ -484,7 +475,7 @@ int printLibByKey(int libKey) {
 
 int printAllBooks() {
     if (actualBooksCnt == 0) {
-        printf("There are no books at moment ;(\n");
+        printf("There are no books at the moment ;(\n");
         return 0;
     }
     FILE* booksDbFl = NULL;
@@ -496,8 +487,9 @@ int printAllBooks() {
     book b;
     for(int j = 0; j < readableBooksCnt; j++) {
         fread(&b, sizeof(book), 1, booksDbFl);
-        if (-1 != getBookIdxByKey(b.key)) {
-            printBook(b);
+        int bookIdx = getBookIdxByKey(b.key);
+        if (-1 != bookIdx) {
+            printBook(b, bookIdx);
             printf("\n");
         }
     }
@@ -540,7 +532,7 @@ int printBooksByLibKey(int libKey) {
     while (curBookIdx != -1) {
         fseek(booksDbFl, curBookIdx * sizeof(book), SEEK_SET);
         fread(&b, sizeof(book), 1, booksDbFl);
-        printBook(b);
+        printBook(b, getBookIdxByKey(b.key));
         printf("\n");
         curBookIdx = b.nextBookIdx;
     }
@@ -570,6 +562,7 @@ int addFreeLibIdx(int libIdx, int freeLibIdxsCnt) {
         return -2;
     }
 
+    printf("\ninAddFreeLibdx%d|%d\n", freeLibIdxsCnt, libIdx);
     fseek(libsGzFl, freeLibIdxsCnt * sizeof(int), SEEK_SET);
     fwrite(&libIdx, sizeof(int), 1, libsGzFl);
 
@@ -686,10 +679,12 @@ int modifyLib(int libKey) {
     printf("Enter name of property to modify (name, phone, ownership):\n");
     char buf[10];
     scanf("%s", buf);
+    fflush(stdin);
     if (strcmp(buf, "name") == 0) {
         printf("Current value is `%s`.\nEnter new value:\n", l.name);
         char nameBuf[MAX_LIBRARY_NAME_LEN + 1];
         scanf("%s", nameBuf);
+        fflush(stdin);
         if (strlen(nameBuf) > MAX_LIBRARY_NAME_LEN) {
             printf("Invalid input: name is too long.\n");
             return -1;
@@ -699,6 +694,7 @@ int modifyLib(int libKey) {
         printf("Current value is `%s`.\nEnter new value:\n", l.phoneNumber);
         char phoneBuf[MAX_PHONE_NUMBER_LEN + 1];
         scanf("%s", phoneBuf);
+        fflush(stdin);
         if (strlen(phoneBuf) > MAX_PHONE_NUMBER_LEN) {
             printf("Invalid input: phone number is too long.\n");
             return -1;
@@ -706,9 +702,10 @@ int modifyLib(int libKey) {
         strcpy(l.phoneNumber, phoneBuf);
     } else if (strcmp(buf, "ownership") == 0) {
         printf("Current value is `%s`. Enter new value (`s` for `state`, `p` for `private`):\n",
-                (l.isState == 1? "State" : "Private"));
+                (l.isState == 1? "state" : "private"));
         char ownershipBuf[2];
         scanf("%s", ownershipBuf);
+        fflush(stdin);
         if (strcmp(ownershipBuf, "s") == 0) {
             l.isState = 1;
         } else if (strcmp(ownershipBuf, "p") == 0) {
@@ -740,14 +737,15 @@ int modifyBook(int bookKey) {
         return -1;
     }
 
-    logBook(&b);
     printf("Enter name of property to modify (name, author, availability):\n");
     char buf[15];
     scanf("%s", buf);
+    fflush(stdin);
     if (strcmp(buf, "name") == 0) {
         printf("Current value is `%s`.\nEnter new value:\n", b.name);
         char nameBuf[MAX_BOOK_NAME_LEN + 1];
         scanf("%s", nameBuf);
+        fflush(stdin);
         if (strlen(nameBuf) > MAX_BOOK_NAME_LEN) {
             printf("Invalid input: name is too long.\n");
             return -1;
@@ -757,6 +755,7 @@ int modifyBook(int bookKey) {
         printf("Current value is `%s`.\nEnter new value:\n", b.author);
         char authorBuf[MAX_BOOK_AUTHOR_LEN + 1];
         scanf("%s", authorBuf);
+        fflush(stdin);
         if (strlen(authorBuf) > MAX_BOOK_AUTHOR_LEN) {
             printf("Invalid input: author name is too long.\n");
             return -1;
@@ -767,6 +766,7 @@ int modifyBook(int bookKey) {
                (b.isAvailable == 1 ? "Available" : "In use"));
         char availabilityBuf[2];
         scanf("%s", availabilityBuf);
+        fflush(stdin);
         if (strcmp(availabilityBuf, "a") == 0) {
             b.isAvailable = 1;
         } else if (strcmp(availabilityBuf, "u") == 0) {
@@ -791,19 +791,21 @@ int interactWithDb() {
     printf("\nChoose an option (H or 12 to see cheatsheet):\n\n");
 
     char buf[9];
-    scanf("%2s", buf);
+    scanf("%s", buf);
     fflush(stdin);
     printf("\n");
     if (strcmp(buf, "H") == 0) {
         printCheatsheet();
         return 0;
     } else if (strcmp(buf, "Q") == 0) {
-        return 1; // TODO: add save
+        return 1;
+    } else if (!isValidInt(buf, strlen(buf))) {
+        printf("Invalid input: no such option. Try again.\n");
+        return -1;
     }
     int option = atoi(buf);
     if (option < 1 || option > 12) {
         printf("Invalid input: no such option. Try again.\n");
-        fflush(stdin);
         return -1;
     }
 
@@ -834,8 +836,16 @@ int interactWithDb() {
             break;
         }
         case 4: {
+            if (actualLibsCnt != 0) {
+                printf("All the libraries so far:\n\n");
+                printAllLibs();
+                printf("\n");
+            } else {
+                printf("There are no libraries at the moment ;(\n");
+                return -1;
+            }
             success = 1;
-            printf("Enter library key:\n\n");
+            printf("Enter key of library you want to display:\n\n");
             scanf("%s", buf);
             fflush(stdin);
             printf("\n");
@@ -856,8 +866,16 @@ int interactWithDb() {
             break;
         }
         case 6: {
+            if (actualBooksCnt != 0) {
+                printf("All the books so far:\n\n");
+                printAllBooks();
+                printf("\n");
+            } else {
+                printf("There are no books at the moment ;(\n");
+                return -1;
+            }
             success = 1;
-            printf("Enter library key:\n\n");
+            printf("Enter key of book you want to display:\n\n");
             scanf("%s", buf);
             fflush(stdin);
             printf("\n");
@@ -872,8 +890,16 @@ int interactWithDb() {
             break;
         }
         case 7: {
+            if (actualLibsCnt != 0) {
+                printf("All the libraries so far:\n\n");
+                printAllLibs();
+                printf("\n");
+            } else {
+                printf("There are no libraries at the moment ;(\n");
+                return -1;
+            }
             success = 1;
-            printf("Enter library key:\n\n");
+            printf("Enter key of library you want to delete:\n\n");
             scanf("%s", buf);
             fflush(stdin);
             printf("\n");
@@ -891,8 +917,16 @@ int interactWithDb() {
             break;
         }
         case 8: {
+            if (actualBooksCnt != 0) {
+                printf("All the books so far:\n\n");
+                printAllBooks();
+                printf("\n");
+            } else {
+                printf("There are no books at the moment ;(\n");
+                return -1;
+            }
             success = 1;
-            printf("Enter book key:\n\n");
+            printf("Enter key of book you want to delete:\n\n");
             scanf("%s", buf);
             fflush(stdin);
             printf("\n");
@@ -910,8 +944,16 @@ int interactWithDb() {
             break;
         }
         case 9: {
+            if (actualLibsCnt != 0) {
+                printf("All the libraries so far:\n\n");
+                printAllLibs();
+                printf("\n");
+            } else {
+                printf("There are no libraries at the moment ;(\n");
+                return -1;
+            }
             success = 1;
-            printf("Enter library key:\n");
+            printf("Enter key of library you want to modify:\n");
             scanf("%s", buf);
             fflush(stdin);
             if (!isValidInt(buf, strlen(buf))) {
@@ -928,8 +970,16 @@ int interactWithDb() {
             break;
         }
         case 10: {
+            if (actualBooksCnt != 0) {
+                printf("All the books so far:\n\n");
+                printAllBooks();
+                printf("\n");
+            } else {
+                printf("There are no books at the moment ;(\n");
+                return -1;
+            }
             success = 1;
-            printf("Enter book key:\n");
+            printf("Enter key of book you want to modify:\n");
             scanf("%s", buf);
             fflush(stdin);
             if (!isValidInt(buf, strlen(buf))) {
@@ -984,6 +1034,8 @@ void initFiles() {
 }
 
 int main() {
+    // TODO: add tips before requesting data
+
     initFiles();
     while(1 != interactWithDb());
     return 0;

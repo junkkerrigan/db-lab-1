@@ -86,9 +86,7 @@ int retrieveFreeLibIdx() {
     long curPos = 0;
     for(int j = 0; j < MAX_LIBRARIES_COUNT; j++) {
         curPos = ftell(libsGz);
-        printf("\nread: %d\n", curPos);
         fread(&freeIdx, sizeof(int), 1, libsGz);
-        printf("\ninRetrieve:%d|\n", freeIdx);
         if (freeIdx != -1) {
             fseek(libsGz, curPos, SEEK_SET);
             int minusOne = -1;
@@ -96,7 +94,6 @@ int retrieveFreeLibIdx() {
             fseek(libsGz, curPos, SEEK_SET);
             int a;
             fread(&a, sizeof(int), 1, libsGz);
-            printf("\nread: %d\n", a);
             fclose(libsGz);
             return freeIdx;
         }
@@ -163,7 +160,6 @@ int addLib() {
     l.key = freeLibKey++;
 
     int idx = retrieveFreeLibIdx();
-    printf("\ninAddLib: %d|\n", idx);
     if (idx < 0) {
         return -1;
     }
@@ -562,7 +558,6 @@ int addFreeLibIdx(int libIdx, int freeLibIdxsCnt) {
         return -2;
     }
 
-    printf("\ninAddFreeLibdx%d|%d\n", freeLibIdxsCnt, libIdx);
     fseek(libsGzFl, freeLibIdxsCnt * sizeof(int), SEEK_SET);
     fwrite(&libIdx, sizeof(int), 1, libsGzFl);
 
@@ -875,7 +870,7 @@ int interactWithDb() {
                 return -1;
             }
             success = 1;
-            printf("Enter key of book you want to display:\n\n");
+            printf("Enter key of library you want to display books from:\n\n");
             scanf("%s", buf);
             fflush(stdin);
             printf("\n");

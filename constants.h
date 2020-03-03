@@ -24,5 +24,3 @@ extern const char libsGzFileName[];
 extern const char booksDbFileName[];
 extern const char booksIdxFileName[];
 extern const char booksGzFileName[];
-
-extern const int idxFileOffset;

@@ -442,6 +442,10 @@ int printAllLibs() {
         }
     }
     printLibraryFooter();
+    printf("\nThere %s %d librar%s at all.\n",
+            actualLibsCnt == 1? "is" : "are",
+            actualLibsCnt,
+            actualLibsCnt == 1? "y" : "ies");
     fclose(libsDb);
 
     return 0;
@@ -490,6 +494,10 @@ int printAllBooks() {
         }
     }
     printBooksFooter();
+    printf("\nThere %s %d book%s at all.\n",
+           actualBooksCnt == 1? "is" : "are",
+           actualBooksCnt,
+           actualBooksCnt == 1? "" : "s");
     fclose(booksDbFl);
 
     return 0;
@@ -525,14 +533,21 @@ int printBooksByLibKey(int libKey) {
 
     printBooksHeader();
     book b;
+    int booksInLibCnt = 0;
     while (curBookIdx != -1) {
         fseek(booksDbFl, curBookIdx * sizeof(book), SEEK_SET);
         fread(&b, sizeof(book), 1, booksDbFl);
         printBook(b, getBookIdxByKey(b.key));
+        booksInLibCnt++;
         printf("\n");
         curBookIdx = b.nextBookIdx;
     }
     printBooksFooter();
+    printf("\nThere %s %d book%s in library with key `%d`.\n",
+            (booksInLibCnt == 1)? "is" : "are",
+            booksInLibCnt,
+            (booksInLibCnt == 1)? "" : "s",
+            libKey);
 
     fclose(booksDbFl);
     return 0;

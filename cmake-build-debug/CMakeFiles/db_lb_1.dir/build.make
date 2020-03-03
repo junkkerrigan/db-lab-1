@@ -42,10 +42,10 @@ RM = "C:\Program Files\JetBrains\CLion 2019.3.4\bin\cmake\win\bin\cmake.exe" -E 
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:\Users\User\CLionProjects\db-lb-1
+CMAKE_SOURCE_DIR = C:\Users\User\Desktop\db-lab-1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:\Users\User\CLionProjects\db-lb-1\cmake-build-debug
+CMAKE_BINARY_DIR = C:\Users\User\Desktop\db-lab-1\cmake-build-debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/db_lb_1.dir/depend.make
@@ -58,42 +58,42 @@ include CMakeFiles/db_lb_1.dir/flags.make
 
 CMakeFiles/db_lb_1.dir/main.c.obj: CMakeFiles/db_lb_1.dir/flags.make
 CMakeFiles/db_lb_1.dir/main.c.obj: ../main.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\CLionProjects\db-lb-1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/db_lb_1.dir/main.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\db_lb_1.dir\main.c.obj   -c C:\Users\User\CLionProjects\db-lb-1\main.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Desktop\db-lab-1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/db_lb_1.dir/main.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\db_lb_1.dir\main.c.obj   -c C:\Users\User\Desktop\db-lab-1\main.c
 
 CMakeFiles/db_lb_1.dir/main.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/db_lb_1.dir/main.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\User\CLionProjects\db-lb-1\main.c > CMakeFiles\db_lb_1.dir\main.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\User\Desktop\db-lab-1\main.c > CMakeFiles\db_lb_1.dir\main.c.i
 
 CMakeFiles/db_lb_1.dir/main.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/db_lb_1.dir/main.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\User\CLionProjects\db-lb-1\main.c -o CMakeFiles\db_lb_1.dir\main.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\User\Desktop\db-lab-1\main.c -o CMakeFiles\db_lb_1.dir\main.c.s
 
 CMakeFiles/db_lb_1.dir/utils.c.obj: CMakeFiles/db_lb_1.dir/flags.make
 CMakeFiles/db_lb_1.dir/utils.c.obj: ../utils.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\CLionProjects\db-lb-1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/db_lb_1.dir/utils.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\db_lb_1.dir\utils.c.obj   -c C:\Users\User\CLionProjects\db-lb-1\utils.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Desktop\db-lab-1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/db_lb_1.dir/utils.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\db_lb_1.dir\utils.c.obj   -c C:\Users\User\Desktop\db-lab-1\utils.c
 
 CMakeFiles/db_lb_1.dir/utils.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/db_lb_1.dir/utils.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\User\CLionProjects\db-lb-1\utils.c > CMakeFiles\db_lb_1.dir\utils.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\User\Desktop\db-lab-1\utils.c > CMakeFiles\db_lb_1.dir\utils.c.i
 
 CMakeFiles/db_lb_1.dir/utils.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/db_lb_1.dir/utils.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\User\CLionProjects\db-lb-1\utils.c -o CMakeFiles\db_lb_1.dir\utils.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\User\Desktop\db-lab-1\utils.c -o CMakeFiles\db_lb_1.dir\utils.c.s
 
 CMakeFiles/db_lb_1.dir/constants.c.obj: CMakeFiles/db_lb_1.dir/flags.make
 CMakeFiles/db_lb_1.dir/constants.c.obj: ../constants.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\CLionProjects\db-lb-1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/db_lb_1.dir/constants.c.obj"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\db_lb_1.dir\constants.c.obj   -c C:\Users\User\CLionProjects\db-lb-1\constants.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\User\Desktop\db-lab-1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/db_lb_1.dir/constants.c.obj"
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles\db_lb_1.dir\constants.c.obj   -c C:\Users\User\Desktop\db-lab-1\constants.c
 
 CMakeFiles/db_lb_1.dir/constants.c.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/db_lb_1.dir/constants.c.i"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\User\CLionProjects\db-lb-1\constants.c > CMakeFiles\db_lb_1.dir\constants.c.i
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E C:\Users\User\Desktop\db-lab-1\constants.c > CMakeFiles\db_lb_1.dir\constants.c.i
 
 CMakeFiles/db_lb_1.dir/constants.c.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/db_lb_1.dir/constants.c.s"
-	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\User\CLionProjects\db-lb-1\constants.c -o CMakeFiles\db_lb_1.dir\constants.c.s
+	C:\MinGW\bin\gcc.exe $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S C:\Users\User\Desktop\db-lab-1\constants.c -o CMakeFiles\db_lb_1.dir\constants.c.s
 
 # Object files for target db_lb_1
 db_lb_1_OBJECTS = \
@@ -111,7 +111,7 @@ db_lb_1.exe: CMakeFiles/db_lb_1.dir/build.make
 db_lb_1.exe: CMakeFiles/db_lb_1.dir/linklibs.rsp
 db_lb_1.exe: CMakeFiles/db_lb_1.dir/objects1.rsp
 db_lb_1.exe: CMakeFiles/db_lb_1.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\User\CLionProjects\db-lb-1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable db_lb_1.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\User\Desktop\db-lab-1\cmake-build-debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Linking C executable db_lb_1.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\db_lb_1.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -124,6 +124,6 @@ CMakeFiles/db_lb_1.dir/clean:
 .PHONY : CMakeFiles/db_lb_1.dir/clean
 
 CMakeFiles/db_lb_1.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\User\CLionProjects\db-lb-1 C:\Users\User\CLionProjects\db-lb-1 C:\Users\User\CLionProjects\db-lb-1\cmake-build-debug C:\Users\User\CLionProjects\db-lb-1\cmake-build-debug C:\Users\User\CLionProjects\db-lb-1\cmake-build-debug\CMakeFiles\db_lb_1.dir\DependInfo.cmake --color=$(COLOR)
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" C:\Users\User\Desktop\db-lab-1 C:\Users\User\Desktop\db-lab-1 C:\Users\User\Desktop\db-lab-1\cmake-build-debug C:\Users\User\Desktop\db-lab-1\cmake-build-debug C:\Users\User\Desktop\db-lab-1\cmake-build-debug\CMakeFiles\db_lb_1.dir\DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/db_lb_1.dir/depend
 

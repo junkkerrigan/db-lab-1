@@ -4,9 +4,9 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/User/CLionProjects/db-lb-1/constants.c" "C:/Users/User/CLionProjects/db-lb-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/constants.c.obj"
-  "C:/Users/User/CLionProjects/db-lb-1/main.c" "C:/Users/User/CLionProjects/db-lb-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/main.c.obj"
-  "C:/Users/User/CLionProjects/db-lb-1/utils.c" "C:/Users/User/CLionProjects/db-lb-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/utils.c.obj"
+  "C:/Users/User/Desktop/db-lab-1/constants.c" "C:/Users/User/Desktop/db-lab-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/constants.c.obj"
+  "C:/Users/User/Desktop/db-lab-1/main.c" "C:/Users/User/Desktop/db-lab-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/main.c.obj"
+  "C:/Users/User/Desktop/db-lab-1/utils.c" "C:/Users/User/Desktop/db-lab-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/utils.c.obj"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 

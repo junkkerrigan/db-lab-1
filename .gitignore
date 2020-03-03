@@ -1,1 +1,4 @@
 .idea
+**/CMakeFiles/*.gz
+**/CMakeFiles/*.idx
+**/CMakeFiles/*.data

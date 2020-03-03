@@ -686,6 +686,9 @@ int modifyLib(int libKey) {
         return -1;
     }
 
+    printf("\nCurrent library data is:\n\n");
+    logLibrary(&l);
+    printf("\n");
     printf("Enter name of property to modify (name, phone, ownership):\n");
     char buf[10];
     scanf("%s", buf);
@@ -747,6 +750,10 @@ int modifyBook(int bookKey) {
         return -1;
     }
 
+
+    printf("\nCurrent book data is:\n\n");
+    logBook(&b);
+    printf("\n");
     printf("Enter name of property to modify (name, author, availability):\n");
     char buf[15];
     scanf("%s", buf);

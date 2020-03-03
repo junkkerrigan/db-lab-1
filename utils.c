@@ -4,12 +4,16 @@
 #include "utils.h"
 
 void logBook(book* b) {
-    printf("key: %d\nlibKey: %d\nname: %s\nauthor: %s\nisAvailable: %d\nnextBookAddr: %d\n",
-           b->key, b->libKey, b->name, b->author, b->isAvailable, b->nextBookIdx);
+    printf("Key: %d\nLibrary key: %d\nName: %s\nAuthor: %s\nStatus: %s\n",
+           b->key,
+           b->libKey,
+           b->name,
+           b->author,
+           (b->isAvailable == 1)? "available" : "in use");
 }
 
 void logLibrary(lib* l) {
-    printf("key: %d\nname: %s\nphoneNumber: %s\nisState: %s\nbooksCnt: %d\n",
+    printf("Key: %d\nName: %s\nPhone number: %s\nType: %s\nAmount of books: %d\n",
            l->key, l->name, l->phoneNumber, (l->isState == 1)? "state" : "private", l->booksCnt);
 }
 

@@ -1,11 +1,9 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/db_lb_1.dir/constants.c.obj"
-  "CMakeFiles/db_lb_1.dir/main.c.obj"
-  "CMakeFiles/db_lb_1.dir/utils.c.obj"
-  "db_lb_1.exe"
-  "db_lb_1.exe.manifest"
+  "CMakeFiles/db_lb_1.dir/constants.c.o"
+  "CMakeFiles/db_lb_1.dir/main.c.o"
+  "CMakeFiles/db_lb_1.dir/utils.c.o"
+  "db_lb_1"
   "db_lb_1.pdb"
-  "libdb_lb_1.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

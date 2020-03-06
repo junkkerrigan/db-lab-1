@@ -797,7 +797,6 @@ int modifyBook(int bookKey) {
         return -1;
     }
 
-    logBook(&b);
     if (0 != writeBookToDbOnIdx(&b, bookIdx)) {
         return -1;
     }

@@ -4,11 +4,11 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "C:/Users/User/Desktop/db-lab-1/constants.c" "C:/Users/User/Desktop/db-lab-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/constants.c.obj"
-  "C:/Users/User/Desktop/db-lab-1/main.c" "C:/Users/User/Desktop/db-lab-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/main.c.obj"
-  "C:/Users/User/Desktop/db-lab-1/utils.c" "C:/Users/User/Desktop/db-lab-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/utils.c.obj"
+  "/Users/andriipav/db-lab-1/constants.c" "/Users/andriipav/db-lab-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/constants.c.o"
+  "/Users/andriipav/db-lab-1/main.c" "/Users/andriipav/db-lab-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/main.c.o"
+  "/Users/andriipav/db-lab-1/utils.c" "/Users/andriipav/db-lab-1/cmake-build-debug/CMakeFiles/db_lb_1.dir/utils.c.o"
   )
-set(CMAKE_C_COMPILER_ID "GNU")
+set(CMAKE_C_COMPILER_ID "AppleClang")
 
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
